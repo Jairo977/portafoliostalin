@@ -3,90 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portafolio de Stalin Ruiz, Tecnólogo en Informática y Multimedia especializado en diseño gráfico, producción audiovisual y contenido digital." />
-  <title>Stalin Ruiz | Diseñador Multimedia</title>
+  <meta name="description" content="Portafolio de Stalin Ruiz — Diseñador Gráfico y Multimedia especializado en producción audiovisual, branding y campañas digitales en Riobamba, Ecuador." />
+  <title>Stalin Ruiz | Diseñador Gráfico & Multimedia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand brand" href="#inicio">Stalin Ruiz</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú">
-        <span class="navbar-toggler-icon"></span>
+
+  <!-- NAV -->
+  <nav class="main-nav" id="mainNav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#inicio">SR<span class="brand-dot">.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
       </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#perfil">Perfil</a></li>
-          <li class="nav-item"><a class="nav-link" href="#oferta">Oferta</a></li>
-          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portafolio">Portafolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#perfil" class="nav-link">Perfil</a></li>
+        <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+        <li><a href="#portafolio" class="nav-link">Portafolio</a></li>
+        <li><a href="#contacto" class="nav-link nav-cta">Contacto</a></li>
+      </ul>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero" id="inicio">
-    <div class="hero-backdrop"></div>
-    <div class="container position-relative">
-      <div class="row align-items-center gy-4">
-        <div class="col-lg-7">
-          <p class="hero-kicker">Diseñador Gráfico | Producción Audiovisual</p>
-          <h1>Stalin Ruiz</h1>
-          <p class="hero-subtitle">Tecnólogo en Informática y Multimedia con enfoque en edición de video, diseño de piezas visuales, creación de contenido y campañas digitales.</p>
-          <div class="hero-actions d-flex flex-wrap gap-3">
-            <a href="#portafolio" class="btn btn-brand">Ver Portafolio</a>
-            <a href="#contacto" class="btn btn-outline-light">Hablemos</a>
-          </div>
+    <div class="hero-bg-anim">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-tag">Diseñador Gráfico · Producción Audiovisual</span>
+        <h1>Stalin<br><span class="hero-name-accent">Ruiz</span></h1>
+        <p class="hero-desc">Tecnólogo en Informática y Multimedia con enfoque en diseño visual, producción audiovisual, branding corporativo y campañas digitales 360°.</p>
+        <div class="hero-chips">
+          <span><i class="bi bi-geo-alt-fill"></i> Riobamba, Ecuador</span>
+          <span><i class="bi bi-calendar-check-fill"></i> +1 año de experiencia</span>
+          <span><i class="bi bi-stars"></i> IA aplicada al diseño</span>
         </div>
-        <div class="col-lg-5">
-          <div class="hero-card">
-            <h2>Disponibilidad</h2>
-            <ul>
-              <li><i class="bi bi-geo-alt"></i> Riobamba, Ecuador</li>
-              <li><i class="bi bi-building"></i> Modalidad presencial / híbrida</li>
-              <li><i class="bi bi-camera-reels"></i> Fuerte en contenido multimedia</li>
-              <li><i class="bi bi-stars"></i> Apoyo con IA para producción creativa</li>
-            </ul>
+        <div class="hero-actions">
+          <a href="#portafolio" class="btn-primary">Ver Portafolio</a>
+          <a href="#contacto" class="btn-ghost">Hablemos <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="hero-avatar-col">
+        <div class="avatar-frame">
+          <div class="avatar-placeholder">
+            <i class="bi bi-person-fill"></i>
+            <span>Foto de perfil</span>
+          </div>
+          <div class="avatar-ring"></div>
+          <div class="avatar-ring ring2"></div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>+1 año</strong>
+            <span>Experiencia comprobable</span>
+          </div>
+          <div class="stat-card">
+            <strong>360°</strong>
+            <span>Visión multimedia</span>
+          </div>
+          <div class="stat-card">
+            <strong>5+</strong>
+            <span>Herramientas Adobe</span>
           </div>
         </div>
       </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </header>
 
   <main>
-    <section id="perfil" class="section-light">
+
+    <!-- PERFIL -->
+    <section id="perfil" class="section">
       <div class="container">
-        <div class="section-heading">
-          <span>Perfil Profesional</span>
-          <h2>Diseño visual con enfoque estratégico</h2>
-        </div>
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <div class="panel">
-              <p>Stalin combina su base tecnológica con una visión creativa para construir piezas visuales que conectan con audiencias reales. Su trabajo cubre diseño gráfico, producción audiovisual, branding y contenido para redes.</p>
-              <p>Cuenta con experiencia en flujos de diseño de principio a fin: conceptualización, dirección visual, edición, entrega y adaptación a diferentes formatos digitales y corporativos.</p>
+        <div class="section-label">Sobre mí</div>
+        <h2 class="section-title">Diseño visual con<br><span class="accent">enfoque estratégico</span></h2>
+        <div class="perfil-grid">
+          <div class="perfil-text">
+            <p>Stalin combina su base tecnológica con una visión creativa para construir piezas visuales que conectan con audiencias reales. Su trabajo abarca diseño gráfico, producción audiovisual, branding y contenido para redes sociales.</p>
+            <p>Cuenta con experiencia en flujos de diseño de principio a fin: conceptualización, dirección visual, edición, entrega y adaptación a diferentes formatos digitales y corporativos. Integra herramientas de inteligencia artificial generativa para optimizar tiempos y potenciar propuestas creativas.</p>
+            <div class="perfil-tags">
+              <span>Photoshop</span>
+              <span>Illustrator</span>
+              <span>Premiere Pro</span>
+              <span>After Effects</span>
+              <span>InDesign</span>
+              <span>IA Generativa</span>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="panel metric-panel">
+          <div class="perfil-cards">
+            <div class="info-card">
+              <i class="bi bi-mortarboard-fill"></i>
               <div>
-                <h3>+1 año</h3>
-                <p>Experiencia comprobable</p>
+                <strong>Formación</strong>
+                <p>Tecnólogo en Informática y Multimedia — carrera afín a Diseño Gráfico, Comunicación Multimedia y Producción Audiovisual.</p>
               </div>
+            </div>
+            <div class="info-card">
+              <i class="bi bi-briefcase-fill"></i>
               <div>
-                <h3>360°</h3>
-                <p>Visión de campañas multimedia</p>
+                <strong>Experiencia</strong>
+                <p>Más de 1 año comprobable en agencias creativas, producción audiovisual y gestión visual de marcas corporativas.</p>
               </div>
+            </div>
+            <div class="info-card">
+              <i class="bi bi-cpu-fill"></i>
               <div>
-                <h3>Adobe</h3>
-                <p>Suite de diseño y postproducción</p>
+                <strong>Innovación con IA</strong>
+                <p>Uso de herramientas de inteligencia artificial generativa para optimizar tiempos y enriquecer propuestas visuales.</p>
               </div>
             </div>
           </div>
@@ -94,101 +130,147 @@
       </div>
     </section>
 
-    <section id="oferta" class="section-accent">
+    <!-- HABILIDADES -->
+    <section id="habilidades" class="section section-dark">
       <div class="container">
-        <div class="section-heading light">
-          <span>Oferta Laboral Referencial</span>
-          <h2>Perfil alineado a tu requerimiento</h2>
+        <div class="section-label light">Conocimientos</div>
+        <h2 class="section-title light">Herramientas &<br><span class="accent-light">competencias</span></h2>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <div class="skill-icon"><i class="bi bi-palette-fill"></i></div>
+            <h3>Diseño Gráfico</h3>
+            <ul>
+              <li><span class="skill-name">Photoshop</span><div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div></li>
+              <li><span class="skill-name">Illustrator</span><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></li>
+              <li><span class="skill-name">InDesign</span><div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <div class="skill-icon"><i class="bi bi-camera-reels-fill"></i></div>
+            <h3>Producción Audiovisual</h3>
+            <ul>
+              <li><span class="skill-name">Premiere Pro</span><div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div></li>
+              <li><span class="skill-name">After Effects</span><div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div></li>
+              <li><span class="skill-name">Fotografía / Iluminación</span><div class="skill-bar"><div class="skill-fill" style="--pct:82%"></div></div></li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <div class="skill-icon"><i class="bi bi-phone-fill"></i></div>
+            <h3>Entorno Digital</h3>
+            <ul>
+              <li><span class="skill-name">Social Media & Campañas</span><div class="skill-bar"><div class="skill-fill" style="--pct:92%"></div></div></li>
+              <li><span class="skill-name">Branding & Manuales</span><div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div></li>
+              <li><span class="skill-name">IA Generativa</span><div class="skill-bar"><div class="skill-fill" style="--pct:78%"></div></div></li>
+            </ul>
+          </div>
         </div>
-        <div class="offer-grid">
-          <article class="offer-card">
-            <h3><i class="bi bi-mortarboard"></i> Formación</h3>
-            <p>Título de tercer nivel en Diseño Gráfico, Producción Audiovisual, Comunicación Multimedia o carreras afines.</p>
-          </article>
-          <article class="offer-card">
-            <h3><i class="bi bi-briefcase"></i> Experiencia</h3>
-            <p>Mínimo 1 año comprobable en agencias creativas, instituciones o gestión visual de marcas.</p>
-          </article>
-          <article class="offer-card wide">
-            <h3><i class="bi bi-lightbulb"></i> Conocimientos específicos</h3>
-            <ul>
-              <li>Dominio avanzado de Adobe: Photoshop, Illustrator, InDesign, Premiere Pro y After Effects.</li>
-              <li>Producción audiovisual integral: fotografía, iluminación, grabación y edición de video.</li>
-              <li>Aplicación de IA generativa para optimizar tiempos y potenciar ideas visuales.</li>
-              <li>Branding: construcción de identidad visual, tipografías y manuales de marca.</li>
-              <li>Entorno digital: contenido nativo para redes sociales y campañas 360.</li>
-            </ul>
-          </article>
-          <article class="offer-card wide">
-            <h3><i class="bi bi-kanban"></i> Funciones del cargo</h3>
-            <ul>
-              <li>Conceptualizar y ejecutar piezas gráficas para campañas institucionales y comerciales.</li>
-              <li>Planificar, producir y editar coberturas fotográficas y material audiovisual completo.</li>
-              <li>Proponer formatos y tendencias visuales para elevar la comunicación de marca.</li>
-              <li>Trabajar de forma colaborativa con comunicación y marketing para sostener la estrategia.</li>
-            </ul>
-          </article>
-          <article class="offer-card wide">
-            <h3><i class="bi bi-people"></i> Competencias y habilidades soft</h3>
-            <ul>
-              <li>Productividad y autogestión para cumplir objetivos con anticipación.</li>
-              <li>Pensamiento creativo y resolución visual de problemas.</li>
-              <li>Mejora continua y apertura para aprender nuevas herramientas.</li>
-              <li>Comunicación efectiva, atención al detalle y trabajo en equipo.</li>
-            </ul>
-          </article>
+        <div class="soft-skills">
+          <div class="soft-item"><i class="bi bi-lightning-charge-fill"></i><span>Productividad & autogestión</span></div>
+          <div class="soft-item"><i class="bi bi-lightbulb-fill"></i><span>Pensamiento creativo</span></div>
+          <div class="soft-item"><i class="bi bi-arrow-repeat"></i><span>Mejora continua</span></div>
+          <div class="soft-item"><i class="bi bi-people-fill"></i><span>Trabajo en equipo</span></div>
+          <div class="soft-item"><i class="bi bi-chat-dots-fill"></i><span>Comunicación efectiva</span></div>
+          <div class="soft-item"><i class="bi bi-search-heart-fill"></i><span>Atención al detalle</span></div>
         </div>
       </div>
     </section>
 
-    <section id="servicios" class="section-light">
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="section">
       <div class="container">
-        <div class="section-heading">
-          <span>Foco de Trabajo</span>
-          <h2>Servicios clave de Stalin</h2>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-xl-3"><div class="service-card"><i class="bi bi-play-btn"></i><h3>Edición de Video</h3><p>Reels, spots y piezas comerciales con ritmo visual y narrativa de marca.</p></div></div>
-          <div class="col-md-6 col-xl-3"><div class="service-card"><i class="bi bi-image"></i><h3>Edición de Imagen</h3><p>Retoque, composición y optimización de piezas gráficas para digital e impresión.</p></div></div>
-          <div class="col-md-6 col-xl-3"><div class="service-card"><i class="bi bi-easel2"></i><h3>Diseño de Post</h3><p>Contenido visual para redes sociales, campañas y comunicación interna.</p></div></div>
-          <div class="col-md-6 col-xl-3"><div class="service-card"><i class="bi bi-palette2"></i><h3>Branding</h3><p>Identidad visual, estilos tipográficos y lineamientos gráficos consistentes.</p></div></div>
-        </div>
-      </div>
-    </section>
+        <div class="section-label">Trabajo</div>
+        <h2 class="section-title">Proyectos &<br><span class="accent">portafolio visual</span></h2>
 
-    <section id="portafolio" class="section-light">
-      <div class="container">
-        <div class="section-heading">
-          <span>Portafolio Visual</span>
-          <h2>Piezas y proyectos multimedia</h2>
-          <p class="note">Sección lista para conectarse con Cloudinary por URL de cada imagen/video.</p>
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="institucional">
+            <i class="bi bi-building-fill"></i> Institucional
+          </button>
+          <button class="filter-btn" data-filter="nutrifamily">
+            <i class="bi bi-heart-pulse-fill"></i> Nutrifamily
+          </button>
+          <button class="filter-btn" data-filter="inversef">
+            <i class="bi bi-house-fill"></i> Inversef
+          </button>
+          <button class="filter-btn" data-filter="branding">
+            <i class="bi bi-award-fill"></i> Branding
+          </button>
+          <button class="filter-btn" data-filter="social">
+            <i class="bi bi-instagram"></i> Social Media
+          </button>
+          <button class="filter-btn" data-filter="video">
+            <i class="bi bi-play-circle-fill"></i> Video & Motion
+          </button>
         </div>
+
         <div id="portfolioGrid" class="portfolio-grid"></div>
       </div>
     </section>
 
-    <section id="contacto" class="section-contact">
+    <!-- CONTACTO -->
+    <section id="contacto" class="section section-contact">
       <div class="container">
-        <div class="contact-panel">
-          <h2>¿Tienes un proyecto visual en mente?</h2>
-          <p>Stalin Ruiz está disponible para colaborar en campañas, contenido digital, producción multimedia y diseño corporativo.</p>
-          <div class="d-flex flex-wrap gap-3 justify-content-center">
-            <a class="btn btn-brand" href="mailto:stalinruiz.design@gmail.com">Enviar correo</a>
-            <a class="btn btn-outline-light" href="https://wa.me/593000000000" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+        <div class="contact-wrapper">
+          <div class="contact-text">
+            <div class="section-label light">Contáctame</div>
+            <h2 class="section-title light">¿Listo para<br><span class="accent-light">crear algo</span> increíble?</h2>
+            <p>Stalin Ruiz está disponible para proyectos de diseño gráfico, producción audiovisual, branding y campañas digitales. Ubicado en Riobamba, Ecuador.</p>
+            <div class="contact-info-list">
+              <a href="mailto:stalinruiz.design@gmail.com" class="contact-info-item">
+                <i class="bi bi-envelope-fill"></i>
+                <span>stalinruiz.design@gmail.com</span>
+              </a>
+              <a href="https://wa.me/593961535839" target="_blank" rel="noopener" class="contact-info-item" id="whatsappLink">
+                <i class="bi bi-whatsapp"></i>
+                <span>+593 96 153 5839</span>
+              </a>
+              <div class="contact-info-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Riobamba, Ecuador</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a href="mailto:stalinruiz.design@gmail.com" class="btn-primary btn-lg">
+              <i class="bi bi-envelope-fill"></i> Enviar correo
+            </a>
+            <a href="https://wa.me/593961535839" target="_blank" rel="noopener" class="btn-whatsapp" id="whatsappBtn">
+              <i class="bi bi-whatsapp"></i> Escribir por WhatsApp
+            </a>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer>
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-      <p class="mb-0">© <span id="currentYear"></span> Stalin Ruiz. Portafolio multimedia.</p>
-      <p class="mb-0">Creado en base al perfil solicitado.</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">SR<span class="brand-dot">.</span></span>
+      <p>© <span id="currentYear"></span> Stalin Ruiz — Diseñador Gráfico & Multimedia</p>
+      <p class="footer-sub">Riobamba, Ecuador</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <a
+    href="https://wa.me/593961535839"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp-float"
+    aria-label="Escribir por WhatsApp"
+    title="Escribir por WhatsApp"
+  >
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="bi bi-x-lg"></i></button>
+    <div class="lightbox-body" id="lightboxBody"></div>
+    <div class="lightbox-info" id="lightboxInfo"></div>
+  </div>
+  <div class="lightbox-overlay" id="lightboxOverlay"></div>
+
   <script src="js/main.js"></script>
 </body>
 </html>
