@@ -1,0 +1,384 @@
+:root {
+  --bg-deep: #023a73;
+  --bg-mid: #0a69b8;
+  --bg-light: #1cb6f4;
+  --ink: #0f172a;
+  --muted: #4b5563;
+  --paper: #f3f8ff;
+  --white: #ffffff;
+  --line: rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #f7fbff 0%, #eaf3ff 100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Sora", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(2, 58, 115, 0.12);
+}
+
+.brand {
+  font-weight: 800;
+  color: var(--bg-deep);
+}
+
+.navbar .nav-link {
+  color: var(--ink);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  background: rgba(10, 105, 184, 0.12);
+  color: var(--bg-deep);
+}
+
+.hero {
+  position: relative;
+  min-height: 96vh;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  background: linear-gradient(130deg, var(--bg-deep) 0%, var(--bg-mid) 48%, var(--bg-light) 100%);
+  overflow: hidden;
+  padding: 9rem 0 5rem;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.18), transparent 35%);
+  animation: pulseField 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseField {
+  from { transform: scale(1); }
+  to { transform: scale(1.06); }
+}
+
+.hero-kicker {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  margin-bottom: 0.9rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  max-width: 650px;
+  opacity: 0.96;
+}
+
+.hero-actions .btn {
+  border-radius: 999px;
+  padding: 0.72rem 1.3rem;
+  font-weight: 700;
+}
+
+.btn-brand {
+  background: #ffffff;
+  color: #02457f;
+  border: none;
+}
+
+.btn-brand:hover {
+  background: #e3f2ff;
+  color: #013665;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 1rem;
+  padding: 1.4rem;
+  backdrop-filter: blur(8px);
+}
+
+.hero-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #f6fbff;
+}
+
+.hero-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.hero-card li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.section-light,
+.section-accent,
+.section-contact {
+  padding: 5rem 0;
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading span {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0a69b8;
+}
+
+.section-heading h2 {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+}
+
+.section-heading.light span,
+.section-heading.light h2 {
+  color: #ecf8ff;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.4rem;
+  box-shadow: 0 14px 32px rgba(2, 58, 115, 0.08);
+}
+
+.metric-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.metric-panel h3 {
+  margin: 0;
+  color: #02457f;
+  font-size: 1.8rem;
+}
+
+.metric-panel p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.section-accent {
+  color: var(--white);
+  background: linear-gradient(145deg, #02447f 0%, #0b66ad 55%, #1db0e6 100%);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.offer-card {
+  background: rgba(2, 25, 48, 0.28);
+  border: 1px solid rgba(226, 244, 255, 0.3);
+  border-radius: 1rem;
+  padding: 1.2rem;
+}
+
+.offer-card.wide {
+  grid-column: span 2;
+}
+
+.offer-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.08rem;
+  margin-bottom: 0.7rem;
+}
+
+.offer-card p,
+.offer-card li {
+  color: rgba(242, 249, 255, 0.98);
+}
+
+.offer-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  padding: 1.25rem;
+  height: 100%;
+  box-shadow: 0 10px 26px rgba(2, 58, 115, 0.08);
+}
+
+.service-card i {
+  font-size: 1.4rem;
+  color: #0a69b8;
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  margin-top: 0.8rem;
+}
+
+.service-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.note {
+  margin-top: 0.8rem;
+  color: #1f4f7c;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.portfolio-item {
+  background: var(--white);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 26px rgba(2, 58, 115, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-thumb {
+  height: 190px;
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(140deg, #0a69b8 0%, #1db0e6 100%);
+}
+
+.thumb-placeholder {
+  display: grid;
+  place-items: center;
+  color: #e8f5ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.portfolio-body {
+  padding: 1rem;
+}
+
+.portfolio-body h3 {
+  font-size: 1rem;
+}
+
+.portfolio-meta {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.portfolio-actions {
+  margin-top: 0.9rem;
+}
+
+.portfolio-actions .btn {
+  width: 100%;
+  border-radius: 0.7rem;
+  font-weight: 600;
+}
+
+.section-contact {
+  background: linear-gradient(160deg, #023a73 0%, #0e5a97 100%);
+  color: var(--white);
+}
+
+.contact-panel {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.contact-panel p {
+  color: rgba(240, 250, 255, 0.92);
+}
+
+footer {
+  background: #011f3b;
+  color: #d3ebff;
+  padding: 1.1rem 0;
+}
+
+@media (max-width: 991.98px) {
+  .offer-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .offer-card.wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    min-height: auto;
+    padding: 7.4rem 0 4rem;
+  }
+
+  .offer-grid,
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-card.wide {
+    grid-column: span 1;
+  }
+
+  .section-light,
+  .section-accent,
+  .section-contact {
+    padding: 4rem 0;
+  }
+}
