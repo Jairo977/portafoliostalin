@@ -42,11 +42,25 @@ function humanTitle(publicId) {
   return cleaned.length > 2 ? cleaned : `Pieza ${publicId}`;
 }
 
+function isExcludedAsset(publicId) {
+  const id = (publicId || '').toLowerCase();
+  if (!id) return true;
+
+  // Cloudinary default samples and sample-like placeholders
+  if (id.startsWith('samples/')) return true;
+  if (id.startsWith('sample/')) return true;
+  if (id.includes('cld-sample')) return true;
+  if (id === 'main-sample') return true;
+
+  return false;
+}
+
 async function fetchResources(resourceType) {
   const out = [];
   let nextCursor = null;
+  const targetRaw = MAX_ITEMS * 3;
 
-  while (out.length < MAX_ITEMS) {
+  while (out.length < targetRaw) {
     const params = new URLSearchParams({
       type: 'upload',
       max_results: '100',
@@ -89,6 +103,7 @@ async function main() {
 
   const merged = [...images, ...videos]
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .filter((resource) => !isExcludedAsset(resource.public_id))
     .slice(0, MAX_ITEMS)
     .map((resource) => {
       const publicId = resource.public_id;
