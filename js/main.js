@@ -47,11 +47,108 @@ const CAT_LABEL = {
   video:         'Video & Motion',
 };
 
+const TOOL_META = {
+  'Photoshop': { kind: 'mono', label: 'Ps', start: '#001e36', end: '#31a8ff' },
+  'Illustrator': { kind: 'mono', label: 'Ai', start: '#2c1400', end: '#ff9a00' },
+  'Premiere Pro': { kind: 'mono', label: 'Pr', start: '#1e0936', end: '#d86dff' },
+  'After Effects': { kind: 'mono', label: 'Ae', start: '#140f2e', end: '#9f7bff' },
+  'InDesign': { kind: 'mono', label: 'Id', start: '#3d0625', end: '#ff5fa2' },
+  'Blender': { kind: 'mono', label: 'Bl', start: '#1a2740', end: '#ff8a00' },
+  'Fotografía': { kind: 'glyph', icon: 'bi-camera-fill', start: '#123f73', end: '#2aa7ff' },
+  'Iluminación': { kind: 'glyph', icon: 'bi-lightbulb-fill', start: '#5a3d04', end: '#ffc447' },
+  'Fotografía / Iluminación': { kind: 'glyph', icon: 'bi-camera-reels-fill', start: '#25426f', end: '#70c4ff' },
+  'IA Generativa': { kind: 'glyph', icon: 'bi-stars', start: '#17334f', end: '#6dd3ff' },
+  'Branding': { kind: 'glyph', icon: 'bi-award-fill', start: '#4f2604', end: '#ff9f45' },
+  'Branding & Manuales': { kind: 'glyph', icon: 'bi-journal-richtext', start: '#0f365d', end: '#58b0ff' },
+  'Social Media & Campañas': { kind: 'glyph', icon: 'bi-megaphone-fill', start: '#3c1d5e', end: '#bc7dff' },
+  'Campañas 360°': { kind: 'glyph', icon: 'bi-bullseye', start: '#0b3d3d', end: '#49d6c8' },
+  'Adobe Firefly': { kind: 'mono', label: 'Ff', start: '#5a1a0a', end: '#ff7e47' },
+  'Midjourney': { kind: 'mono', label: 'Mj', start: '#1d2436', end: '#6a7cff' },
+  'ChatGPT': { kind: 'glyph', icon: 'bi-cpu-fill', start: '#0d3a32', end: '#41d39f' },
+};
+
+const CATEGORY_ORDER = ['institucional', 'nutrifamily', 'inversef', 'branding', 'social', 'video'];
+
+const CATEGORY_INTROS = {
+  institucional: 'Aquí reúno piezas institucionales y corporativas donde priorizo claridad, confianza visual y presencia profesional.',
+  nutrifamily: 'En esta colección muestro el trabajo que desarrollé para Nutrifamily, cuidando cercanía, frescura y coherencia de marca.',
+  inversef: 'Aquí presento mi línea visual para Inversef, enfocada en captar atención rápida y comunicar atributos comerciales con fuerza.',
+  branding: 'En esta parte comparto proyectos donde construyo identidad, aplicaciones de marca y sistemas visuales consistentes.',
+  social: 'Aquí agrupo piezas pensadas para redes sociales, con impacto visual inmediato y mensajes diseñados para detener el scroll.',
+  video: 'En esta sección muestro trabajos audiovisuales y motion graphics donde combino ritmo, narrativa y presencia de marca.',
+};
+
+const FEATURED_CASES = [
+  {
+    title: 'Crédito Directo — Campaña Visual',
+    eyebrow: 'Selección destacada',
+    headline: 'Diseño financiero con presencia institucional',
+    summary: 'En esta campaña combiné claridad comercial y confianza visual para comunicar una oferta de forma directa, sólida y profesional.',
+    points: ['Jerarquía clara', 'Tono corporativo', 'Enfoque comercial'],
+  },
+  {
+    title: 'Intro Institucional — Motion Graphics',
+    eyebrow: 'Motion & video',
+    headline: 'Movimiento con peso de marca',
+    summary: 'En esta pieza audiovisual trabajé una entrada con fuerza para ordenar la atención y proyectar seriedad desde los primeros segundos.',
+    points: ['Narrativa breve', 'Impacto audiovisual', 'Ritmo institucional'],
+  },
+  {
+    title: 'Tarjeta de Presentación — Branding Corporativo',
+    eyebrow: 'Branding aplicado',
+    headline: 'Identidad que se sostiene en lo tangible',
+    summary: 'Aquí llevé el branding a una pieza física con criterio editorial, buena legibilidad y una ejecución que transmite orden y profesionalismo.',
+    points: ['Aplicación real', 'Criterio tipográfico', 'Detalle material'],
+  },
+];
+
+function getToolMeta(name) {
+  if (TOOL_META[name]) return TOOL_META[name];
+
+  const compact = name
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() || '')
+    .join('') || name.slice(0, 2).toUpperCase();
+
+  return {
+    kind: 'mono',
+    label: compact,
+    start: '#163b69',
+    end: '#4cb6ff',
+  };
+}
+
+function renderToolBadge(name) {
+  const meta = getToolMeta(name);
+  const iconContent = meta.kind === 'glyph'
+    ? `<i class="bi ${meta.icon}" aria-hidden="true"></i>`
+    : `<span class="tool-badge__mono" aria-hidden="true">${meta.label}</span>`;
+
+  return `
+    <span class="tool-badge">
+      <span class="tool-badge__icon ${meta.kind === 'glyph' ? 'is-glyph' : 'is-mono'}" style="--icon-start:${meta.start}; --icon-end:${meta.end};">
+        ${iconContent}
+      </span>
+      <span class="tool-badge__label">${name}</span>
+    </span>
+  `;
+}
+
+function decorateStaticTools() {
+  document.querySelectorAll('[data-tool]').forEach((node) => {
+    const name = node.dataset.tool?.trim() || node.textContent.trim();
+    if (!name) return;
+    node.innerHTML = renderToolBadge(name);
+  });
+}
+
 /* ---- Build portfolio card ---- */
 function buildCard(item) {
   const cat   = item.category || 'general';
   const label = CAT_LABEL[cat] || cat;
-  const tools = (item.tools || []).map(t => `<span class="tool-tag">${t}</span>`).join('');
+  const tools = (item.tools || []).map((tool) => `<span class="tool-tag">${renderToolBadge(tool)}</span>`).join('');
   const isVideo = item.resourceType === 'video';
 
   const thumb = item.image
@@ -77,18 +174,155 @@ function buildCard(item) {
   return article;
 }
 
+function buildFeaturedCase(feature, item, isHero = false) {
+  const cat = item.category || 'general';
+  const label = CAT_LABEL[cat] || cat;
+  const article = document.createElement('article');
+  article.className = `featured-case ${isHero ? 'featured-case--hero' : ''} reveal`;
+  article.tabIndex = 0;
+  article.setAttribute('role', 'button');
+  article.setAttribute('aria-label', `Abrir proyecto destacado: ${item.title}`);
+  article.innerHTML = `
+    <div class="featured-case__media">
+      <img src="${item.image}" alt="${item.title}" loading="lazy">
+    </div>
+    <div class="featured-case__content">
+      <span class="featured-case__eyebrow">${feature.eyebrow}</span>
+      <div class="featured-case__meta">
+        <span><i class="bi bi-grid-1x2-fill"></i> ${label}</span>
+        ${item.client ? `<span><i class="bi bi-briefcase-fill"></i> ${item.client}</span>` : ''}
+      </div>
+      <h3>${feature.headline}</h3>
+      <p>${feature.summary}</p>
+      <ul class="featured-case__points">
+        ${feature.points.map((point) => `<li>${point}</li>`).join('')}
+      </ul>
+      <button class="featured-case__cta" type="button">
+        Ver proyecto <i class="bi bi-arrow-up-right"></i>
+      </button>
+    </div>
+  `;
+
+  const open = () => openLightbox(item, label);
+  article.addEventListener('click', open);
+  article.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      open();
+    }
+  });
+  article.querySelector('.featured-case__cta')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    open();
+  });
+  return article;
+}
+
+function renderFeaturedShowcase(items) {
+  const showcase = document.getElementById('featuredShowcase');
+  if (!showcase) return;
+
+  const featuredItems = FEATURED_CASES
+    .map((feature) => {
+      const item = items.find((entry) => entry.title === feature.title);
+      return item ? { feature, item } : null;
+    })
+    .filter(Boolean);
+
+  showcase.innerHTML = '';
+  if (!featuredItems.length) return;
+
+  const [heroCase, ...stackCases] = featuredItems;
+  showcase.appendChild(buildFeaturedCase(heroCase.feature, heroCase.item, true));
+
+  if (stackCases.length) {
+    const stack = document.createElement('div');
+    stack.className = 'featured-stack';
+    stackCases.forEach(({ feature, item }) => {
+      stack.appendChild(buildFeaturedCase(feature, item));
+    });
+    showcase.appendChild(stack);
+  }
+}
+
+function renderPortfolioGroups(items) {
+  const container = document.getElementById('portfolioGroups');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  CATEGORY_ORDER.forEach((category) => {
+    const groupItems = items.filter((item) => item.category === category);
+    if (!groupItems.length) return;
+
+    const section = document.createElement('section');
+    section.className = 'portfolio-group reveal';
+    section.id = `group-${category}`;
+    section.innerHTML = `
+      <div class="portfolio-group__head">
+        <div>
+          <span class="portfolio-group__eyebrow">${CAT_LABEL[category]}</span>
+          <h3>${CAT_LABEL[category]}</h3>
+          <p>${CATEGORY_INTROS[category] || ''}</p>
+        </div>
+        <div class="portfolio-group__count">
+          <strong>${groupItems.length}</strong>
+          <span>${groupItems.length === 1 ? 'proyecto' : 'proyectos'}</span>
+        </div>
+      </div>
+      <div class="portfolio-group__grid"></div>
+    `;
+
+    const grid = section.querySelector('.portfolio-group__grid');
+    groupItems.forEach((item) => grid?.appendChild(buildCard(item)));
+    container.appendChild(section);
+  });
+}
+
+function updatePortfolioMetrics(items) {
+  const projects = items.length;
+  const categories = new Set(items.map((item) => item.category).filter(Boolean)).size;
+  const tools = new Set(items.flatMap((item) => item.tools || [])).size;
+
+  const metricProjects = document.getElementById('metricProjects');
+  const metricCategories = document.getElementById('metricCategories');
+  const metricTools = document.getElementById('metricTools');
+
+  if (metricProjects) metricProjects.textContent = String(projects);
+  if (metricCategories) metricCategories.textContent = String(categories);
+  if (metricTools) metricTools.textContent = String(tools);
+}
+
+function hydrateFilterCounts(items) {
+  const counts = items.reduce((acc, item) => {
+    const cat = item.category || 'general';
+    acc[cat] = (acc[cat] || 0) + 1;
+    return acc;
+  }, {});
+
+  document.querySelectorAll('.filter-btn[data-category]').forEach((button) => {
+    const category = button.dataset.category || '';
+    const count = counts[category] || 0;
+    button.querySelector('.filter-count')?.remove();
+    const badge = document.createElement('span');
+    badge.className = 'filter-count';
+    badge.textContent = String(count);
+    button.appendChild(badge);
+  });
+}
+
 /* ---- Render grid ---- */
 let allItems = [];
 async function renderPortfolio() {
-  const grid = document.getElementById('portfolioGrid');
-  if (!grid) return;
   allItems = await fetchItems();
-  grid.innerHTML = '';
-  allItems.forEach(item => grid.appendChild(buildCard(item)));
+  updatePortfolioMetrics(allItems);
+  renderFeaturedShowcase(allItems);
+  renderPortfolioGroups(allItems);
+  hydrateFilterCounts(allItems);
   observeCards();
 }
 
-/* ---- Filter ---- */
+/* ---- Portfolio nav ---- */
 function initFilters() {
   const bar = document.getElementById('filterBar');
   if (!bar) return;
@@ -97,20 +331,10 @@ function initFilters() {
     if (!btn) return;
     bar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    applyFilter(btn.dataset.filter);
-  });
-}
-
-function applyFilter(cat) {
-  const grid = document.getElementById('portfolioGrid');
-  const cards = grid ? Array.from(grid.children) : [];
-  cards.forEach(card => {
-    const match = cat === 'all' || card.dataset.category === cat;
-    card.classList.toggle('hidden', !match);
-    if (match) {
-      // trigger re-reveal
-      card.classList.remove('visible');
-      requestAnimationFrame(() => card.classList.add('visible'));
+    const targetId = btn.dataset.target;
+    const target = targetId ? document.getElementById(targetId) : null;
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 }
@@ -270,6 +494,7 @@ function markReveals() {
 
 /* ---- Init ---- */
 document.addEventListener('DOMContentLoaded', () => {
+  decorateStaticTools();
   markReveals();
   initNav();
   initMobileDock();
