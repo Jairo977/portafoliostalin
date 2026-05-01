@@ -225,6 +225,42 @@ function setYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+/* ---- Mobile dock active state ---- */
+function initMobileDock() {
+  const dockLinks = Array.from(document.querySelectorAll('.mobile-dock__link[data-section]'));
+  if (!dockLinks.length) return;
+
+  const sections = dockLinks
+    .map((link) => {
+      const id = link.dataset.section;
+      const section = document.getElementById(id);
+      return section ? { link, section } : null;
+    })
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const setActive = (id) => {
+    dockLinks.forEach((link) => {
+      link.classList.toggle('active', link.dataset.section === id);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (!visible.length) return;
+    setActive(visible[0].target.id);
+  }, {
+    rootMargin: '-45% 0px -45% 0px',
+    threshold: [0.2, 0.45, 0.7],
+  });
+
+  sections.forEach(({ section }) => observer.observe(section));
+}
+
 /* ---- Add reveal class to static sections ---- */
 function markReveals() {
   document.querySelectorAll('.info-card, .skill-block, .soft-item, .stat-card').forEach(el => {
@@ -236,6 +272,7 @@ function markReveals() {
 document.addEventListener('DOMContentLoaded', () => {
   markReveals();
   initNav();
+  initMobileDock();
   initFilters();
   setYear();
   renderPortfolio().then(() => {
